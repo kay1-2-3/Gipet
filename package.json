@@ -1,4 +1,5 @@
 {
+  "name": "gipet",
   "private": true,
   "workspaces": {
     "packages": [

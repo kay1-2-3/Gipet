@@ -1,6 +1,6 @@
 import { useLazyQuery, useSubscription } from '@apollo/client'
 import Container from '@mui/material/Container'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { MetaTags, useMutation } from '@redwoodjs/web'
 import { useEffect } from 'react'
 import { generateAndGetIDedFingerprint } from 'src/3rdParty/fingerprint'

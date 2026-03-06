@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { Link, routes } from '@redwoodjs/router'
 import LottieAnimation from 'src/lottie/Animation'
 import {

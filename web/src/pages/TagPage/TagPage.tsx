@@ -1,6 +1,6 @@
 import { useLazyQuery } from '@apollo/client'
 import { Box, Container, Typography } from '@mui/material'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { MetaTags } from '@redwoodjs/web'
 import { useEffect } from 'react'
 import Space from 'src/components/Space/Space'

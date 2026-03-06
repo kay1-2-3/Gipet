@@ -6,7 +6,7 @@
 # https://redwoodjs.com/docs/app-configuration-redwood-toml
 
 [web]
-  title = "fnick"
+  title = "Gipet"
   port = 8910
   apiUrl = "/api"
   # Use webpack to avoid "rw-vite-dev not found" on Windows when PATH doesn't include node_modules/.bin

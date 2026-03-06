@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { Form } from '@redwoodjs/forms'
 import {
   Button,

@@ -1,5 +1,5 @@
 import Container from '@mui/material/Container'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { MetaTags } from '@redwoodjs/web'
 import SnippetForm from 'src/components/SnippetForm/SnippetForm'
 import SnippetsCell from 'src/components/SnippetsCell'

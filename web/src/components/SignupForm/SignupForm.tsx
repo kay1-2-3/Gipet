@@ -5,7 +5,7 @@ import {
 } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { Form } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
 import { toast } from '@redwoodjs/web/toast'

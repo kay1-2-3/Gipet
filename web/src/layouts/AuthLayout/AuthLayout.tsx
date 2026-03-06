@@ -2,7 +2,6 @@ import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
 import { Toaster } from '@redwoodjs/web/toast'
-import Footer from 'src/components/Footer/Footer'
 import HomeButton from 'src/components/HomeButton/HomeButton'
 
 type HomeLayoutProps = {
@@ -31,17 +30,6 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
             {children}
           </Container>
         </main>
-        <footer
-          style={{
-            borderTop: `0.01rem solid ${theme.palette.text.secondary}`,
-            padding: 10,
-            background: theme.palette.containerPrimary.main,
-          }}
-        >
-          <Stack alignItems={'center'}>
-            <Footer />
-          </Stack>
-        </footer>
       </Stack>
     </>
   )

@@ -159,3 +159,4 @@ const TagSnippetsCell = ({ name }: Props) => {
 }
 
 export const Success = TagSnippetsCell
+export { TagSnippetsCell }

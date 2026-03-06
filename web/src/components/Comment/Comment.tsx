@@ -1,7 +1,7 @@
 import { useReactiveVar } from '@apollo/client'
 import ReplyIcon from '@mui/icons-material/Reply'
 import { Button, Stack, Typography } from '@mui/material'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import CommentReplyForm from 'src/components/CommentReplyForm'
 import {
   closeReplyForm,

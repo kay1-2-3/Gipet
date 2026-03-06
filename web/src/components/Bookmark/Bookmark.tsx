@@ -1,5 +1,5 @@
 import { useApolloClient } from '@apollo/client'
-import { useAuth } from '@redwoodjs/auth'
+import { useAuth } from 'src/auth'
 import { useEffect, useState } from 'react'
 import { USER_BOOKMARKS_QUERY } from 'src/graphql/queries'
 import CreateBookmark from '../CreateBookmark/CreateBookmark'

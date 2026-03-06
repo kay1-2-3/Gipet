@@ -4,7 +4,7 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import { useEffect } from 'react'
-import { AuthProvider } from '@redwoodjs/auth'
+import { AuthProvider } from 'src/auth'
 import { StyledEngineProvider } from '@mui/material/styles'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
@@ -25,7 +25,7 @@ const App = () => {
   return (
       <FatalErrorBoundary page={FatalErrorPage}>
         <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
-          <AuthProvider type="dbAuth">
+          <AuthProvider>
             <StyledEngineProvider injectFirst>
               <ThemeProvider>
                 <RedwoodApolloProvider graphQLClientConfig={{ cache }}>
