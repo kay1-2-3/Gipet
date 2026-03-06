@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "browserslist": {
+    "development": [
+      "last 1 version"
+    ],
+    "production": [
+      "defaults",
+      "not IE 11",
+      "not IE_Mob 11"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@fingerprintjs/fingerprintjs": "^3.3.3",
+    "@fontsource/roboto": "^4.5.7",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/lab": "^5.0.0-alpha.84",
+    "@mui/material": "^5.7.0",
+    "@redwoodjs/auth": "^7.5.0",
+    "@redwoodjs/forms": "^7.5.0",
+    "@redwoodjs/router": "^7.5.0",
+    "@redwoodjs/web": "^7.5.0",
+    "lodash.throttle": "^4.1.1",
+    "prop-types": "15.8.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-lottie": "^1.2.3"
+  }
+}

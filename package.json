@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "api",
+      "web",
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "setup-db-auth": "rw setup auth dbAuth",
+    "setup-frontend-auth": "rw generate dbAuth",
+    "gen-secret": "rw generate secret",
+    "migrate": "rw prisma migrate dev",
+    "prisma-push": "rw prisma db push",
+    "types": "rw generate types",
+    "dev": "rw dev",
+    "studio": "rw prisma studio",
+    "db-console": "rw console",
+    "storybook": "rw storybook"
+  },
+  "devDependencies": {
+    "@redwoodjs/core": "^7.5.0"
+  },
+  "eslintConfig": {
+    "extends": "@redwoodjs/eslint-config",
+    "root": true
+  },
+  "engines": {
+    "node": "20.x",
+    "yarn": ">=1.15"
+  },
+  "prisma": {
+    "seed": "yarn rw exec seed"
+  },
+  "packageManager": "yarn@3.2.0",
+  "resolutions": {
+    "@types/react": "17.0.40"
+  }
+}

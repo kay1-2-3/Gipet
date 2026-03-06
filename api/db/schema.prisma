@@ -1,0 +1,142 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = "native"
+}
+
+model User {
+  id                  Int        @id @default(autoincrement())
+  username            String     @unique
+  hashedPassword      String
+  salt                String
+  resetToken          String?
+  resetTokenExpiresAt DateTime?
+  roles               String     @default("user")
+  createdAt           DateTime   @default(now())
+  updatedAt           DateTime   @updatedAt
+  isBanned            Boolean    @default(false)
+  bio                 String?
+  avatarUrl           String?
+  // prisma relations
+  snippets            Snippet[]  @relation("author")
+  votes               Vote[]
+  bookmarks           Bookmark[]
+  comments            Comment[]
+  pages               Page[]     @relation("created")
+  joinedPages         Page[]
+}
+
+model Snippet {
+  id        Int        @id @default(autoincrement())
+  title     String
+  body      String
+  imageUrl  String?
+  score     Int        @default(0)
+  authorId  Int
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  pageId    Int?
+  activity  Int        @default(0)
+  viewCount Int        @default(0)
+  // prisma relations
+  author    User       @relation("author", fields: [authorId], references: [id])
+  languages Language[]
+  tags      Tag[]
+  comments  Comment[]
+  votes     Vote[]
+  bookmarks Bookmark[]
+  visitors  Visitor[]
+  page      Page?      @relation(fields: [pageId], references: [id])
+}
+
+model Visitor {
+  id            Int     @id @default(autoincrement())
+  fingerprintId String  @unique
+  snippetId     Int
+  snippet       Snippet @relation(fields: [snippetId], references: [id])
+}
+
+model Page {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  creatorId   Int
+  createdBy   User      @relation("created", fields: [creatorId], references: [id])
+  snippets    Snippet[]
+  joinedUsers User[]
+}
+
+model Vote {
+  id         Int        @id @default(autoincrement())
+  value      Int
+  entityType String // COMMENT | SNIPPET (SQLite doesn't support enums)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  userId     Int
+  // vote given to what, comment or snippet
+  snippetId  Int?
+  commentId  Int?
+  // prisma relations
+  user       User       @relation(fields: [userId], references: [id])
+  snippet    Snippet?   @relation(fields: [snippetId], references: [id])
+  comment    Comment?   @relation(fields: [commentId], references: [id])
+}
+
+model Bookmark {
+  id         Int        @id @default(autoincrement())
+  entityType String // COMMENT | SNIPPET (SQLite doesn't support enums)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  userId     Int
+  // vote given to what, comment or snippet
+  snippetId  Int?
+  commentId  Int?
+  // prisma relations
+  user       User       @relation(fields: [userId], references: [id])
+  snippet    Snippet?   @relation(fields: [snippetId], references: [id])
+  comment    Comment?   @relation(fields: [commentId], references: [id])
+}
+
+model Comment {
+  id              Int        @id @default(autoincrement())
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  body            String
+  authorId        Int
+  score           Int        @default(0)
+  snippetId       Int
+  activity        Int        @default(0)
+  // prisma relations
+  votes           Vote[]
+  bookmarks       Bookmark[]
+  author          User       @relation(fields: [authorId], references: [id])
+  snippet         Snippet    @relation(fields: [snippetId], references: [id])
+  parentCommentId Int?
+  parent          Comment?   @relation("parentChildComment", fields: [parentCommentId], references: [id])
+  comments        Comment[]  @relation("parentChildComment")
+}
+
+model Language {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  // prisma relations
+  snippets  Snippet[]
+}
+
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  // prisma relations
+  snippets  Snippet[]
+}
+
+// Enums stored as String in SQLite; GraphQL still uses EntityType/VoteType enums
